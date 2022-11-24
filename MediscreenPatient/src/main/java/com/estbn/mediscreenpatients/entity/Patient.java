@@ -1,4 +1,4 @@
-package com.estbn.mediscreenpatients.model;
+package com.estbn.mediscreenpatients.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

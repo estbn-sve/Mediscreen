@@ -1,7 +1,7 @@
-package com.estbn.mediscreenpatients.controller;
+package com.estbn.mediscreenotes.mediscreennote.controller;
 
-import com.estbn.mediscreenpatients.entity.Patient;
-import com.estbn.mediscreenpatients.service.PatientService;
+import com.estbn.mediscreenotes.mediscreennote.entity.Note;
+import com.estbn.mediscreenotes.mediscreennote.service.NoteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,45 +12,45 @@ import java.util.NoSuchElementException;
 
 @RestController
 @Slf4j
-@RequestMapping("/patient")
+@RequestMapping("/note")
 @CrossOrigin("http://localhost:4200")
-public class PatientController {
+public class NoteController {
 
-    final String requestMapping ="/patient";
+    final String requestMapping ="/note";
 
     @Autowired
-    private PatientService service;
+    private NoteService service;
 
     @GetMapping("")
-    public List<Patient> getAllPatients(){
+    public List<Note> getAllNotes(){
         log.info("GET : "+requestMapping);
-        return service.getAllPatients();
+        return service.getAllNotes();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Patient> getPatient(@PathVariable("id") final Integer id){
+    public ResponseEntity<Note> getNote(@PathVariable("id") final Integer id){
         log.info("GET : "+requestMapping+"/"+id);
         try {
-            return ResponseEntity.ok(service.getPatient(id));
+            return ResponseEntity.ok(service.getNote(id));
         } catch (NoSuchElementException e){
             log.error("GET "+requestMapping+"/"+id+" Error : "+e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }
     @PostMapping("/")
-    public ResponseEntity<Patient> addPatient(@RequestBody Patient patient){
-        log.info("POST : "+requestMapping+"/"+patient.getId());
+    public ResponseEntity<Note> addNote(@RequestBody Note Note){
+        log.info("POST : "+requestMapping+"/"+Note.getId());
         try {
-            return ResponseEntity.ok(service.addPatient(patient));
+            return ResponseEntity.ok(service.addNote(Note));
         } catch (NoSuchElementException e){
-            log.error("POST "+requestMapping+"/"+patient.getId()+" Error : "+e.getMessage());
+            log.error("POST "+requestMapping+"/"+Note.getId()+" Error : "+e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Patient> putPatient(@PathVariable("id") final Integer id, @RequestBody Patient patient){
+    public ResponseEntity<Note> putNote(@PathVariable("id") final Integer id, @RequestBody Note Note){
         log.info("PUT : "+requestMapping+"/"+id);
         try {
-            return ResponseEntity.ok(service.putPatient(patient, id));
+            return ResponseEntity.ok(service.putNote(Note, id));
         } catch (NoSuchElementException e){
             log.error("PUT "+requestMapping+"/"+id+" Error : "+e.getMessage());
             return ResponseEntity.notFound().build();
@@ -58,10 +58,10 @@ public class PatientController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Patient> deletePatient(@PathVariable("id") final Integer id){
+    public ResponseEntity<Note> deleteNote(@PathVariable("id") final Integer id){
         log.info("DELETE "+requestMapping+"/"+id);
         try {
-            return ResponseEntity.ok(service.deletePatien(id));
+            return ResponseEntity.ok(service.deleteNote(id));
         }catch (NoSuchElementException e){
             log.error("DELETE "+requestMapping+"/"+id+" Error : "+e.getMessage());
             return ResponseEntity.notFound().build();

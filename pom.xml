@@ -8,6 +8,7 @@
 	<version>latest-SNAPSHOT</version>
 	<modules>
 		<module>MediscreenPatient</module>
+		<module>MediscreenNote</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>

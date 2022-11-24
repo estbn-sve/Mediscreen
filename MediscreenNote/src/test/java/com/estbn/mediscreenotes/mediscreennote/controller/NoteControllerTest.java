@@ -1,17 +1,16 @@
-package com.estbn.mediscreenpatients.controller;
+package com.estbn.mediscreenotes.mediscreennote.controller;
 
-import com.estbn.mediscreenpatients.entity.Patient;
-import com.estbn.mediscreenpatients.service.PatientService;
+import com.estbn.mediscreenotes.mediscreennote.entity.Note;
+import com.estbn.mediscreenotes.mediscreennote.service.NoteService;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
-import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.web.servlet.MockMvc;
-
 
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -22,62 +21,62 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@WebMvcTest(PatientController.class)
+@WebMvcTest(NoteController.class)
 @ContextConfiguration
-class PatientControllerTest {
+class NoteControllerTest {
     @Autowired
     public MockMvc mockMvc;
     @MockBean
-    public PatientService service;
+    public NoteService service;
 
-    final private String requestMapping = "/patient/";
+    final private String requestMapping = "/note/";
 
     //getAll
     @Test
-    void getAllPatients() throws Exception {
-        when(service.getAllPatients()).thenReturn(new ArrayList<>());
+    void getAllNotes() throws Exception {
+        when(service.getAllNotes()).thenReturn(new ArrayList<>());
         mockMvc.perform(get(requestMapping))
                 .andExpect(status().isOk());
     }
 
-    //getPatient
+    //getNote
     @Test
-    void getPatient_shouldReturnOk() throws Exception {
-        when(service.getPatient(any())).thenReturn(new Patient());
+    void getNote_shouldReturnOk() throws Exception {
+        when(service.getNote(any())).thenReturn(new Note());
         mockMvc.perform(get(requestMapping+"1"))
                 .andExpect(status().isOk());
     }
     @Test
-    public void getPatient_shouldReturnNotFound() throws Exception{
-        when(service.getPatient(any())).thenThrow(new NoSuchElementException());
+    public void getNote_shouldReturnNotFound() throws Exception{
+        when(service.getNote(any())).thenThrow(new NoSuchElementException());
         mockMvc.perform(get(requestMapping+"1"))
                 .andExpect(status().isNotFound());
     }
 
-    //addPatient
+    //addNote
     @Test
-    void addPatient_shouldReturnOk() throws Exception {
-        when(service.addPatient(any())).thenReturn(new Patient());
+    void addNote_shouldReturnOk() throws Exception {
+        when(service.addNote(any())).thenReturn(new Note());
         mockMvc.perform(post(requestMapping).contentType(MediaType.APPLICATION_JSON).content("{}"))
                 .andExpect(status().isOk());
     }
     @Test
-    void addPatient_shouldReturnNotFound() throws Exception {
-        when(service.addPatient(any())).thenThrow(new NoSuchElementException());
+    void addNote_shouldReturnNotFound() throws Exception {
+        when(service.addNote(any())).thenThrow(new NoSuchElementException());
         mockMvc.perform(post(requestMapping).contentType(MediaType.APPLICATION_JSON).content("{}"))
                 .andExpect(status().isNotFound());
     }
 
-    //putPatient
+    //putNote
     @Test
-    void putPatient_shouldReturnOk() throws Exception {
-        when(service.putPatient(any(),any())).thenReturn(new Patient());
+    void putNote_shouldReturnOk() throws Exception {
+        when(service.putNote(any(),any())).thenReturn(new Note());
         mockMvc.perform(put(requestMapping+"1").contentType(MediaType.APPLICATION_JSON).content("{}"))
                 .andExpect(status().isOk());
     }
     @Test
-    void putPatient_shouldReturnNotFound() throws Exception {
-        when(service.putPatient(any(),any())).thenThrow(new NoSuchElementException());
+    void putNote_shouldReturnNotFound() throws Exception {
+        when(service.putNote(any(),any())).thenThrow(new NoSuchElementException());
         mockMvc.perform(put(requestMapping+"1").contentType(MediaType.APPLICATION_JSON).content("{}"))
                 .andExpect(status().isNotFound());
     }
@@ -85,13 +84,13 @@ class PatientControllerTest {
     //delete
     @Test
     public void deleteBidList_shouldReturnOk() throws Exception{
-        when(service.deletePatien(any())).thenReturn(new Patient());
+        when(service.deleteNote(any())).thenReturn(new Note());
         mockMvc.perform(delete(requestMapping+"1"))
                 .andExpect(status().isOk());
     }
     @Test
     public void deleteBidList_shouldReturnNotFound() throws Exception{
-        when(service.deletePatien(any())).thenThrow(new NoSuchElementException());
+        when(service.deleteNote(any())).thenThrow(new NoSuchElementException());
         mockMvc.perform(delete(requestMapping+"1"))
                 .andExpect(status().isNotFound());
     }

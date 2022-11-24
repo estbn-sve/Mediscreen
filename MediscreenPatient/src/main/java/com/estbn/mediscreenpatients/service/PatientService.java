@@ -1,6 +1,6 @@
 package com.estbn.mediscreenpatients.service;
 
-import com.estbn.mediscreenpatients.model.Patient;
+import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -45,7 +45,7 @@ public class PatientService {
 
     public Patient deletePatien (final Integer id){
         Patient p = repository.findById(id).orElseThrow(()->
-                new NoSuchElementException("Error with deleteBidList "+id));
+                new NoSuchElementException("Error with deletePatient "+id));
         Patient copy = Patient.builder()
                 .id(p.getId())
                 .firstName(p.getFirstName())
