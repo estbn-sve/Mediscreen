@@ -6,7 +6,7 @@
         <groupId>com.estbn.mediscreen</groupId>
         <artifactId>Mediscreen</artifactId>
         <version>latest-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.estbn</groupId>
     <artifactId>MediscreenNote</artifactId>

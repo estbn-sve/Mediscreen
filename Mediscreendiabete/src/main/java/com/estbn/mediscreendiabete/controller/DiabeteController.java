@@ -1,6 +1,5 @@
 package com.estbn.mediscreendiabete.controller;
 
-import com.estbn.mediscreendiabete.entity.Symptom;
 import com.estbn.mediscreendiabete.service.DiabeteService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,14 +17,14 @@ public class DiabeteController {
     @Autowired
     private DiabeteService service;
 
-    @GetMapping("/")
-    public Symptom receivingSymptomByPatient(@RequestBody Symptom symptom){
-        log.info("");
-        return symptom;
-    }
-
-    @PostMapping("/")
-    public Diabete returnResultDiabete(){
-        return new Diabete();
-    }
+//    @GetMapping("/")
+//    public Symptom receivingSymptomByPatient(@RequestBody Symptom symptom){
+//        log.info("");
+//        return symptom;
+//    }
+//
+//    @PostMapping("/")
+//    public Diabete returnResultDiabete(){
+//        return new Diabete();
+//    }
 }
