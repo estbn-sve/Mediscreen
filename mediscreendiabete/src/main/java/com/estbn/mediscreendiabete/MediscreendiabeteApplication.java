@@ -9,5 +9,4 @@ public class MediscreendiabeteApplication {
     public static void main(String[] args) {
         SpringApplication.run(MediscreendiabeteApplication.class, args);
     }
-
 }
