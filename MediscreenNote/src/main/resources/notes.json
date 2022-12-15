@@ -1,0 +1,19 @@
+[{
+  "0": "Ferguson",
+  "1": "Le patient déclare qu'il « se sent très bien »\r\nPoids égal ou inférieur au poids recommandé",
+  "_id": {
+    "$oid": "637f9dc8f90bcffa1f359d5e"
+  }
+},{
+  "0": "Ferguson",
+  "1": "Le patient déclare qu'il se sent fatigué pendant la journée\r\nIl se plaint également de douleurs musculaires\r\nTests de laboratoire indiquant une microalbumine élevée",
+  "_id": {
+    "$oid": "637f9dc8f90bcffa1f359d5f"
+  }
+},{
+  "0": "Ferguson",
+  "1": "Le patient déclare qu'il ne se sent pas si fatigué que ça\r\nFumeur, il a arrêté dans les 12 mois précédents\r\nTests de laboratoire indiquant que les anticorps sont élevés",
+  "_id": {
+    "$oid": "637f9dc8f90bcffa1f359d60"
+  }
+}]
