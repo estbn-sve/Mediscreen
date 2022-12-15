@@ -1,6 +1,6 @@
 package com.estbn.mediscreenpatients.controller;
 
-import com.estbn.mediscreenpatients.model.Patient;
+import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.service.PatientService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

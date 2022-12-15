@@ -1,6 +1,6 @@
 package com.estbn.mediscreenpatients.service;
 
-import com.estbn.mediscreenpatients.model.Patient;
+import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.repository.PatientRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -9,7 +9,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -87,8 +86,8 @@ class PatientServiceTest {
         patient.setFirstName("Jonh");
         when(repository.findById(any())).thenReturn(Optional.of(patient));
         doNothing().when(repository).delete(any());
-        Patient bidResult = service.deletePatien(1);
-        Assertions.assertEquals(patient.getFirstName(), bidResult.getFirstName());
+        Patient patientResult = service.deletePatien(1);
+        Assertions.assertEquals(patient.getFirstName(), patientResult.getFirstName());
     }
     @Test
     void deletePatient_shouldThrowNoSuchElement() {

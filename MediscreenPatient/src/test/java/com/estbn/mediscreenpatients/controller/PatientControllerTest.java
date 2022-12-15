@@ -1,6 +1,6 @@
 package com.estbn.mediscreenpatients.controller;
 
-import com.estbn.mediscreenpatients.model.Patient;
+import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.service.PatientService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
