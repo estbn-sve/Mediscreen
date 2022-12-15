@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {Patient} from "../entity/patient";
 import {environment} from "../../environments/environment";
 import {Subject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
@@ -9,29 +8,41 @@ import {Note} from "../entity/note";
   providedIn: 'root'
 })
 export class NoteService {
-  // @ts-ignore
-  private note : Note;
+  public notes : Note[]=[];
 
   private baseUrl = environment.baseUrlNote;
 
-  noteSubject = new Subject<Note[]>()
+  notesSubject= new Subject<Note[]>();
 
   constructor(private httpClient: HttpClient,) {}
 
-  emitPatientSubject(){
-    // @ts-ignore
-    this.noteSubject.next(this.note.slice());
+  emitNotesSubject(){
+    this.notesSubject.next(this.notes.slice());
   }
 
-  getNoteByIdPatient(id:number){
+
+  // getAllNote(){
+  //   console.log("GET AllNotes")
+  //   this.httpClient.get<Note[]>(`${this.baseUrl}`+"note/")
+  //     .subscribe({
+  //       next : response => {
+  //         console.log("GET NoteAll ok ", response);
+  //         this.notes =response;
+  //         this.emitNotesSubject();
+  //       },error:e => {
+  //         console.error("GET error : "+e);
+  //       }
+  //     })
+  // }
+
+  getNoteByIdPatient(idPatient:string){
     console.log("GET Note")
-    this.httpClient.get<string[]>(`${this.baseUrl}`+"note/"+id)
+    this.httpClient.get<Note[]>(`${this.baseUrl}`+"note/patient/"+idPatient)
       .subscribe({
         next : response => {
-          console.log("GET ok ", response);
-          // @ts-ignore
-          this.note.note =response;
-          this.emitPatientSubject();
+          console.log("GET Note ok ", response);
+          this.notes =response;
+          this.emitNotesSubject();
         },error:e => {
           console.error("GET error : "+e);
         }

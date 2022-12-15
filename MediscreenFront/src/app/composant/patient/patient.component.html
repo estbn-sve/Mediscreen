@@ -1,30 +1,3 @@
-<ng-template #content let-modal>
-  <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
-    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
-  </div>
-  <div class="modal-body">
-    <form>
-      <div class="mb-3">
-        <label for="dateOfBirth">Date of birth</label>
-        <div class="input-group">
-          <input
-            id="dateOfBirth"
-            class="form-control"
-            placeholder="yyyy-mm-dd"
-            name="dp"
-            ngbDatepicker
-            #dp="ngbDatepicker"
-          />
-          <button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
-</ng-template>
 <br>
 <h1>PATIENT</h1>
 <br>
@@ -32,7 +5,6 @@
   <table class="table ">
     <thead>
     <tr class="table-style">
-      <th scope="col">Id</th>
       <th scope="col">FirstName</th>
       <th scope="col">LastName</th>
       <th scope="col">Sex</th>
@@ -42,17 +14,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let patient of patients">
-      <th>{{patient.id}}</th>
+    <tr  *ngFor="let patient of patients" (click)="rootToNotesByPatient(patient.id,patient.lastName)" >
       <th>{{patient.firstName}}</th>
       <th>{{patient.lastName}}</th>
       <th>{{patient.sex}}</th>
       <th>{{patient.address}}</th>
       <th>{{patient.phoneNumber}}</th>
       <th>
-        <button>Edit</button>
-        <button (click)="open(content)">Note</button>
-        <button>Delete</button>
+        <button type="button" class="btn btn-secondary">Edit</button>
+        &nbsp;
+        <button type="button" class="btn btn-danger">Delete</button>
       </th>
     </tr>
     </tbody>

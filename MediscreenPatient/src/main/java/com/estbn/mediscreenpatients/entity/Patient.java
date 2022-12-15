@@ -1,5 +1,6 @@
 package com.estbn.mediscreenpatients.entity;
 
+import com.estbn.mediscreenpatients.Enum.PatientSexeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,7 +32,8 @@ public class Patient {
     @Column(name="date_of_birth")
     private LocalDate dateOfBirth;
     @Column(name="sex")
-    private Boolean sex;
+    @Enumerated(EnumType.STRING)
+    private PatientSexeEnum sex;
     @Column(name="address")
     private String address;
     @Column(name="phone_number")

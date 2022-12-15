@@ -1,5 +1,5 @@
 export interface Note{
-  id :number;
-  idPatient :number;
+  id :string;
+  idPatient :string;
   note :string;
 }
