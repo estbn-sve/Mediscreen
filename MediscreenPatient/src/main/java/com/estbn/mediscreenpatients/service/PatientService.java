@@ -1,10 +1,13 @@
 package com.estbn.mediscreenpatients.service;
 
+import com.estbn.mediscreenpatients.entity.DTO.MiniPatient;
 import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -21,6 +24,27 @@ public class PatientService {
     public Patient getPatient(Integer id){
         return repository.findById(id).orElseThrow(()->
                 new NoSuchElementException("Error with getPatient "+ id));
+    }
+    public MiniPatient getPatientById(Integer id){
+        Patient patient =  repository.findById(id).orElseThrow(()->
+                new NoSuchElementException("Error with getPatient "+ id));
+        MiniPatient miniPatient = new MiniPatient();
+        miniPatient.setId(patient.getId());
+        miniPatient.setLastName(patient.getLastName());
+        miniPatient.setAge(LocalDate.now().getYear() - patient.getDateOfBirth().getYear());
+        miniPatient.setSex(patient.getSex());
+        return miniPatient;
+    }
+
+    public MiniPatient getPatientByFamilyName(String id){
+        Patient patient = repository.findByLastName(id).orElseThrow(()->
+                new NoSuchElementException("Error with getPatient "+ id));
+        MiniPatient miniPatient = new MiniPatient();
+        miniPatient.setId(patient.getId());
+        miniPatient.setLastName(patient.getLastName());
+        miniPatient.setAge(LocalDate.now().getYear() - patient.getDateOfBirth().getYear());
+        miniPatient.setSex(patient.getSex());
+         return miniPatient;
     }
 
     public Patient addPatient(Patient patient){

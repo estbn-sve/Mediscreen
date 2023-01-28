@@ -29,9 +29,20 @@ public class NoteController {
 
     @GetMapping("/patient/{idPatient}")
     public ResponseEntity<List<Note>> getNotesByPatient(@PathVariable("idPatient") final String idPatient){
-        log.info("get nots patient");
+        log.info("get notes patient");
         try {
             return ResponseEntity.ok(service.getNotesByPatient(idPatient));
+        } catch (NoSuchElementException e){
+            log.error("GET "+requestMapping+"/"+idPatient+" Error : "+e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/patient/miniNotes/{idPatient}")
+    public ResponseEntity<List<String >> getMiniNotesByPatient(@PathVariable("idPatient") final String idPatient){
+        log.info("get notes patient");
+        try {
+            return ResponseEntity.ok(service.getMiniNotesByPatient(idPatient));
         } catch (NoSuchElementException e){
             log.error("GET "+requestMapping+"/"+idPatient+" Error : "+e.getMessage());
             return ResponseEntity.notFound().build();

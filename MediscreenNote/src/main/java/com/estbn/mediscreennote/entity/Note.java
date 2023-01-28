@@ -28,9 +28,9 @@ public class Note {
     @Id
     private String id;
 //    @Column(name="0")
-    @Field(name="0")
+    @Field(name="Patient")
     private String idPatient;
 //    @Column(name="1")
-    @Field(name="1")
+    @Field(name="Notes")
     private String note;
 }

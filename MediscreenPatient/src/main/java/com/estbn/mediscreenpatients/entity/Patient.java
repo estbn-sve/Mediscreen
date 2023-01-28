@@ -32,8 +32,7 @@ public class Patient {
     @Column(name="date_of_birth")
     private LocalDate dateOfBirth;
     @Column(name="sex")
-    @Enumerated(EnumType.STRING)
-    private PatientSexeEnum sex;
+    private String sex;
     @Column(name="address")
     private String address;
     @Column(name="phone_number")

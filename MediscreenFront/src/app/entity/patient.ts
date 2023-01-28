@@ -2,7 +2,7 @@ export interface Patient{
   id :number;
   firstName:string;
   lastName:string;
-  dateOfBirth:Date;
+  dateOfBirth:string;
   sex:string;
   address:string;
   phoneNumber:string;
