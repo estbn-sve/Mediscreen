@@ -5,8 +5,8 @@
   <table class="table ">
     <thead>
     <tr class="table-style">
-      <th scope="col">FirstName</th>
       <th scope="col">LastName</th>
+      <th scope="col">FirstName</th>
       <th scope="col">Sex</th>
       <th scope="col">Address</th>
       <th scope="col">PhoneNumber</th>
@@ -14,16 +14,16 @@
     </tr>
     </thead>
     <tbody>
-    <tr  *ngFor="let patient of patients" (click)="rootToNotesByPatient(patient.id,patient.lastName)" >
-      <th>{{patient.firstName}}</th>
+    <tr  *ngFor="let patient of patients">
       <th>{{patient.lastName}}</th>
+      <th>{{patient.firstName}}</th>
       <th>{{patient.sex}}</th>
       <th>{{patient.address}}</th>
       <th>{{patient.phoneNumber}}</th>
       <th>
-        <button type="button" class="btn btn-secondary">Edit</button>
+        <button type="button" class="btn btn-secondary" (click)="rootToNotesByPatient(patient.id,patient.lastName)">Notes & Resultat</button>
         &nbsp;
-        <button type="button" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="deletePatient(patient.id)">Delete</button>
       </th>
     </tr>
     </tbody>

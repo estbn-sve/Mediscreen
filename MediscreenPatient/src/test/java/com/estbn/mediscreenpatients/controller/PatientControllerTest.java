@@ -1,5 +1,6 @@
 package com.estbn.mediscreenpatients.controller;
 
+import com.estbn.mediscreenpatients.entity.DTO.MiniPatient;
 import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.service.PatientService;
 import org.junit.jupiter.api.Test;
@@ -93,6 +94,33 @@ class PatientControllerTest {
     public void deleteBidList_shouldReturnNotFound() throws Exception{
         when(service.deletePatien(any())).thenThrow(new NoSuchElementException());
         mockMvc.perform(delete(requestMapping+"1"))
+                .andExpect(status().isNotFound());
+    }
+
+    //getPatientById
+    @Test
+    void getPatientById_shouldReturnOk() throws Exception {
+        when(service.getPatientById(any())).thenReturn(new MiniPatient());
+        mockMvc.perform(get(requestMapping+"byId/1"))
+                .andExpect(status().isOk());
+    }
+    @Test
+    public void getPatientById_shouldReturnNotFound() throws Exception{
+        when(service.getPatientById(any())).thenThrow(new NoSuchElementException());
+        mockMvc.perform(get(requestMapping+"byId/1"))
+                .andExpect(status().isNotFound());
+    }
+    //getPatientByFamilyName
+    @Test
+    void getPatientByFamilyName_shouldReturnOk() throws Exception {
+        when(service.getPatientByFamilyName(any())).thenReturn(new MiniPatient());
+        mockMvc.perform(get(requestMapping+"byFamilyName/1"))
+                .andExpect(status().isOk());
+    }
+    @Test
+    public void getPatientByFamilyName_shouldReturnNotFound() throws Exception{
+        when(service.getPatientByFamilyName(any())).thenThrow(new NoSuchElementException());
+        mockMvc.perform(get(requestMapping+"byFamilyName/1"))
                 .andExpect(status().isNotFound());
     }
 }

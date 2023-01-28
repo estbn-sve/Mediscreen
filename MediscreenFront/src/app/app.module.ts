@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { PatientComponent } from './composant/patient/patient.component';
 import {RouterModule} from "@angular/router";
 import { MenuComponent } from './composant/menu/menu.component';
-import { HomeComponent } from './composant/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import { NoteComponent } from './composant/detail/note/note.component';
@@ -17,10 +16,9 @@ import { DiabeteComponent } from './composant/detail/diabete/diabete.component';
     AppComponent,
     PatientComponent,
     MenuComponent,
-    HomeComponent,
     NoteComponent,
     DetailComponent,
-    DiabeteComponent
+    DiabeteComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +26,7 @@ import { DiabeteComponent } from './composant/detail/diabete/diabete.component';
     HttpClientModule,
     RouterModule.forRoot([
       {path: 'patient', component: PatientComponent},
-      {path: 'home', component: HomeComponent},
+      {path:'',component: PatientComponent},
       {path:'detail',component:DetailComponent}
     ], {useHash: false})
   ],

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   baseUrlPatient : "http://localhost:8080/",
-  baseUrlNote : "http://localhost:9090/"
+  baseUrlNote : "http://localhost:9090/",
+  baseUrlDiabete : "http://localhost:7070/"
 };
 
 /*

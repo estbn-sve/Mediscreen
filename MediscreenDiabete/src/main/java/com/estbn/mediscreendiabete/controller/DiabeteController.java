@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @Slf4j
 @RequestMapping("/diabete")
@@ -17,14 +19,16 @@ public class DiabeteController {
     @Autowired
     private DiabeteService service;
 
-//    @GetMapping("/")
-//    public Symptom receivingSymptomByPatient(@RequestBody Symptom symptom){
-//        log.info("");
-//        return symptom;
-//    }
-//
-//    @PostMapping("/")
-//    public Diabete returnResultDiabete(){
-//        return new Diabete();
-//    }
+    @GetMapping("/id/{id}")
+    public List<String> diabeteByIDPatient(@PathVariable Integer id){
+        log.info("GET "+requestMapping+"/"+id);
+        return service.diabeteByIDPatient(id);
+    }
+
+    @GetMapping("/familyName/{familyName}")
+    public List<String> diabeteByFamilyName(@PathVariable String familyName){
+        log.info("GET "+requestMapping+"/"+familyName);
+        return service.diabeteByFamilyName(familyName);
+    }
+
 }

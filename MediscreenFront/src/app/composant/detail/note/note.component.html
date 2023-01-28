@@ -1,29 +1,14 @@
 <div class="body-note">
   <br>
-  <h1>Dossier du patient {{patient.lastName}} {{patient.firstName}}</h1>
   <br>
-  <div class ="col-sm patient-table table-style">
-    <a><h6>Date de naissance : </h6>{{patient.dateOfBirth}}</a>
-    <br>
-    <br>
-    <a><h6>Sexe : </h6>{{patient.sex}}</a>
-    <br>
-    <br>
-    <a><h6>Numéro de téléphone : </h6>{{patient.phoneNumber}}</a>
-    <br>
-    <br>
-    <a><h6>Adresse : </h6>{{patient.address}}</a>
-  </div>
+  <h3>Notes du patient : {{notes[0].idPatient}}</h3>
   <br>
   <div *ngFor="let note of notes">
-    <div  class="card">
+    <div class="card">
       <div class="card-body">
         <a>{{note.note}}</a>
       </div>
     </div>
     <br>
-  </div>
-  <div>
-    <button type="button" class="btn btn-secondary" (click)="addNote()"> Add note</button>
   </div>
 </div>

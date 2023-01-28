@@ -1,5 +1,6 @@
 package com.estbn.mediscreenpatients.controller;
 
+import com.estbn.mediscreenpatients.entity.DTO.MiniPatient;
 import com.estbn.mediscreenpatients.entity.Patient;
 import com.estbn.mediscreenpatients.service.PatientService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,26 @@ public class PatientController {
         log.info("GET : "+requestMapping+"/"+id);
         try {
             return ResponseEntity.ok(service.getPatient(id));
+        } catch (NoSuchElementException e){
+            log.error("GET "+requestMapping+"/"+id+" Error : "+e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+    }    @GetMapping("/byId/{id}")
+    public ResponseEntity<MiniPatient> getPatientById(@PathVariable("id") final Integer id){
+        log.info("GET : "+requestMapping+"/"+id);
+        try {
+            return ResponseEntity.ok(service.getPatientById(id));
+        } catch (NoSuchElementException e){
+            log.error("GET "+requestMapping+"/"+id+" Error : "+e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/byFamilyName/{id}")
+    public ResponseEntity<MiniPatient> getPatientByFamilyName(@PathVariable("id") final String id){
+        log.info("GET : "+requestMapping+"/"+id);
+        try {
+            return ResponseEntity.ok(service.getPatientByFamilyName(id));
         } catch (NoSuchElementException e){
             log.error("GET "+requestMapping+"/"+id+" Error : "+e.getMessage());
             return ResponseEntity.notFound().build();
