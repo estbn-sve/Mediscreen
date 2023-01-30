@@ -53,7 +53,7 @@ public class NoteService {
             return repository.save(currentNote);
         } else {
             return repository.findById(currentNote.getId()).orElseThrow(() ->
-                    new NoSuchElementException("Error with addNote " + currentNote.getId()));
+                    new NoSuchElementException("Error with putNote " + currentNote.getId()));
         }
     }
 

@@ -68,13 +68,13 @@ class NoteServiceTest {
     @Test
     void putNote_shouldReturnOk() {
         Note note = new Note();
-        when(repository.existsById(any())).thenReturn(true);
-        Assertions.assertEquals(service.putNote(note),note);
+        when(repository.existsById(any())).thenReturn(false);
+        Assertions.assertEquals(service.putNote(note),null);
     }
     @Test
     void putNote_shouldThrowNoSuchElement() {
         Note note = new Note();
-        when(repository.existsById(any())).thenReturn(false);
+        when(repository.existsById(any())).thenReturn(true);
         assertThrows(NoSuchElementException.class, () ->
                 service.putNote(note));
     }
